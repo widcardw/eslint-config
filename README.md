@@ -9,7 +9,7 @@ Recently I am trying vue-tsx, so this preset includes some jsx presets.
 ### Install
 
 ```sh
-pnpm i -D eslint @widcardw/eslint-config
+pnpm i -D eslint @widcardw/eslint-config eslint-plugin-react
 ```
 
 ### Config `.eslintrc`
