@@ -81,7 +81,6 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
         function SomeComponent() { 
           return (
             <Comp
-
             >
             </Comp>
           )
@@ -94,7 +93,7 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
           )
         }`,
       errors: [
-        { message: 'Expect no line break before closing bracket, but 2 line breaks found.' }
+        { message: 'Expect no line break before closing bracket, but 1 line break found.' }
       ]
     },
     {
@@ -175,7 +174,6 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
         function SomeComponent() { 
           return (
             <div style={{ color: 'black' }}
-
             >
             </div>
           )
@@ -188,7 +186,7 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
           )
         }`,
       errors: [
-        { message: 'Expect no line break before closing bracket, but 2 line breaks found.' }
+        { message: 'Expect no line break before closing bracket, but 1 line break found.' }
       ]
     },
   ]
