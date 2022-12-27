@@ -37,25 +37,27 @@ export const closingTag: Rule.RuleModule = {
         // }
         const locLastAttr = jsxAttributes[jsxAttributes.length - 1].loc!
         const lineBreaks3 = end.line - locLastAttr.end.line
-        if (lineBreaks3 >= 1 && start.line === locLastAttr.end.line) {
-          context.report({
-            node,
-            message: `Expect no line break before closing bracket, but ${lineBreaks3} line break${lineBreaks3 > 1 ? 's' : ''} found.`,
-            fix(fixer) {
-              const endPoint = node.range![1]
-              return fixer.removeRange([endPoint - end.column - lineBreaks3, endPoint - 1])
-            }
-          })
-        }
-        else if (lineBreaks3 > 1) {
-          context.report({
-            node,
-            message: `Expect no line break before closing bracket, but ${lineBreaks3 - 1} line break${lineBreaks3 > 2 ? 's' : ''} found.`,
-            fix(fixer) {
-              const endPoint = node.range![1]
-              return fixer.replaceTextRange([endPoint - end.column - lineBreaks3 + 1, endPoint - 1], ''.padEnd(start.column, ' '))
-            }
-          })
+        if (lineBreaks3 > 1) {
+          if (start.line === locLastAttr.end.line) {
+            context.report({
+              node,
+              message: `Expect no line break before closing bracket, but ${lineBreaks3} line break${lineBreaks3 > 1 ? 's' : ''} found.`,
+              fix(fixer) {
+                const endPoint = node.range![1]
+                return fixer.removeRange([endPoint - end.column - lineBreaks3, endPoint - 1])
+              }
+            })
+          } 
+          else {
+            context.report({
+              node,
+              message: `Expect no line break before closing bracket, but ${lineBreaks3 - 1} line break${lineBreaks3 > 2 ? 's' : ''} found.`,
+              fix(fixer) {
+                const endPoint = node.range![1]
+                return fixer.replaceTextRange([endPoint - end.column - lineBreaks3 + 1, endPoint - 1], ''.padEnd(start.column, ' '))
+              }
+            })
+          }
         }
         if (lineBreaks > 1 && end.column - start.column !== 1) {
           context.report({
