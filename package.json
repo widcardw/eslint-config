@@ -27,6 +27,7 @@
     "@typescript-eslint/parser": "^5.41.0",
     "bumpp": "^8.2.1",
     "eslint": "^8.24.0",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "eslint-plugin-wix": "link:packages/eslint-plugin-wix"
   }
 }
