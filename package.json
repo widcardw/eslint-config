@@ -1,6 +1,6 @@
 {
   "name": "@widcardw/eslint-config-monorepo",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "ESLint config preset which includes jsx based on @antfu/eslint-config.",
   "author": "widcardw <widcardw@foxmail.com>",
   "license": "MIT",
@@ -14,8 +14,7 @@
   "peerDependencies": {
     "eslint": ">=7.4.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@widcardw/eslint-config-jsx": "link:packages/jsx",
