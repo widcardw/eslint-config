@@ -13,12 +13,13 @@
   "license": "MIT",
   "dependencies": {
     "@widcardw/eslint-config-jsx": "workspace:*",
-    "eslint-plugin-wix": "workspace:*"
+    "eslint-plugin-wix": "workspace:*",
+    "@antfu/eslint-config": "^0.34.0"
   },
   "peerDependencies": {
     "eslint": ">=7.4.0"
   },
   "devDependencies": {
-    "eslint": "^8.29.0"
+    "eslint": "^8.30.0"
   }
 }
