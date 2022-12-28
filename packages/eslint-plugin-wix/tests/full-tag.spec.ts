@@ -19,7 +19,7 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
         function SomeComponent() {
           return (
             <div {...props}>
-
+              ...
             </div>
           )
         }`
@@ -30,7 +30,7 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
         function SomeComponent() {
           return (
             <div style={{ color: 'black' }}>
-
+              ...
             </div>
           )
         }`
@@ -44,11 +44,11 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
               style={{ color: 'black' }}
               style={{ color: 'black' }}
             >
-
+              ...
             </div>
           )
         }`
-    }
+    },
   ],
   invalid: [
     {
@@ -58,7 +58,8 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
           return (
             <div
               style={{ color: 'black' }}
-      >
+>
+              ...
             </div>
           )
         }`,
@@ -68,6 +69,7 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
             <div
               style={{ color: 'black' }}
             >
+              ...
             </div>
           )
         }`,
@@ -83,6 +85,7 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
             <Comp
 
             >
+              ...
             </Comp>
           )
         }`,
@@ -90,6 +93,7 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
         function SomeComponent() { 
           return (
             <Comp>
+              ...
             </Comp>
           )
         }`,
@@ -106,6 +110,7 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
               style={{ color: 'black' }}
 
             >
+              ...
             </div>
           )
         }`,
@@ -115,6 +120,7 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
             <div
               style={{ color: 'black' }}
             >
+              ...
             </div>
           )
         }`,
@@ -122,23 +128,6 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
         { message: 'Expect no line break before closing bracket, but 1 line break found.' }
       ]
     },
-    // {
-    //   name: 'JSX element unexpected line breaks between attrs',
-    //   code: `
-    //     function SomeComponent() { 
-    //       return (
-    //         <div
-    //           style={{ color: 'black' }}
-
-    //           onClick={() => {}}
-    //         >
-    //         </div>
-    //       )
-    //     }`,
-    //   errors: [
-    //     { message: 'Expect no line break between attributes, but 1 line break found.' }
-    //   ]
-    // },
     {
       name: 'JSX element unexpected line breaks before bracket and between attrs',
       code: `
@@ -150,6 +139,7 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
               onClick={() => {}}
 
             >
+              ...
             </div>
           )
         }`,
@@ -161,11 +151,11 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
 
               onClick={() => {}}
             >
+              ...
             </div>
           )
         }`,
       errors: [
-        // { message: 'Expect no line break between attributes, but 1 line break found.' },
         { message: 'Expect no line break before closing bracket, but 1 line break found.' }
       ]
     },
@@ -177,6 +167,7 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
             <div style={{ color: 'black' }}
 
             >
+              ...
             </div>
           )
         }`,
@@ -184,11 +175,35 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
         function SomeComponent() { 
           return (
             <div style={{ color: 'black' }}>
+              ...
             </div>
           )
         }`,
       errors: [
         { message: 'Expect no line break before closing bracket, but 2 line breaks found.' }
+      ]
+    },
+    {
+      name: 'JSX element unexpected line breaks before closing bracket',
+      code: `
+        function SomeComponent() { 
+          return (
+            <div style={{ color: 'black' }}
+            >
+              ...
+            </div>
+          )
+        }`,
+      output: `
+        function SomeComponent() { 
+          return (
+            <div style={{ color: 'black' }}>
+              ...
+            </div>
+          )
+        }`,
+      errors: [
+        { message: 'Expect no line break before closing bracket, but 1 line break found.' }
       ]
     },
   ]
