@@ -1,6 +1,6 @@
 {
-  "name": "@widcardw/eslint-config",
-  "version": "0.0.1",
+  "name": "@widcardw/eslint-config-monorepo",
+  "version": "0.2.1",
   "description": "ESLint config preset which includes jsx based on @antfu/eslint-config.",
   "author": "widcardw <widcardw@foxmail.com>",
   "license": "MIT",
@@ -8,22 +8,18 @@
   "keywords": [
     "eslint-config"
   ],
-  "main": "index.js",
-  "files": [
-    "index.js"
-  ],
   "scripts": {
-    "release": "bumpp package.json --commit --push --tag && pnpm -r publish --access public"
+    "release": "bumpp package.json packages/*/package.json --commit --push --tag && pnpm -r publish --access public"
   },
   "peerDependencies": {
     "eslint": ">=7.4.0"
   },
   "dependencies": {
-    "@antfu/eslint-config": "^0.27.0",
-    "eslint-plugin-react": "^7.31.10"
+    "@antfu/eslint-config": "^0.27.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@widcardw/eslint-config-jsx": "link:packages/jsx",
     "@typescript-eslint/parser": "^5.41.0",
     "bumpp": "^8.2.1",
     "eslint": "^8.24.0",
