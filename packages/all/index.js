@@ -12,4 +12,7 @@ module.exports = {
       jsx: true,
     },
   },
+  rules: {
+    'wix/closing-tag': 2,
+  },
 }
