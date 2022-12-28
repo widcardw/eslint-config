@@ -1,12 +1,13 @@
 {
   "name": "eslint-plugin-wix",
-  "version": "0.0.2",
+  "version": "0.2.1",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "test": "ts-mocha tests/*.spec.ts",
+    "t": "ts-mocha",
     "build": "tsup ./src/index.ts ",
-    "release": "bumpp && npm publish"
+    "release": "npm publish"
   },
   "files": [
     "dist"
@@ -16,15 +17,11 @@
     "eslint-plugin",
     "jsx"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "widcardw <widcardw@foxmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "@types/eslint": "^8.4.10",
-    "@types/node": "^18.11.18",
-    "@types/semver": "^7.3.13",
-    "bumpp": "^8.2.1",
     "eslint": "^8.28.0",
-    "semver": "^7.3.8",
     "ts-mocha": "^10.0.0",
     "tsup": "^6.5.0"
   },

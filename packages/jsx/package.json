@@ -1,0 +1,23 @@
+{
+  "name": "@widcardw/eslint-config-jsx",
+  "version": "0.2.1",
+  "description": "",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "eslint-config"
+  ],
+  "author": "widcardw <widcardw@foxmail.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "eslint": ">=7.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.30.0"
+  },
+  "dependencies": {
+    "eslint-plugin-react": "^7.31.11"
+  }
+}
