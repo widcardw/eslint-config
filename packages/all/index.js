@@ -14,5 +14,6 @@ module.exports = {
   },
   rules: {
     'wix/closing-tag': 2,
+    '@typescript-eslint/no-unused-vars': 'off',
   },
 }
