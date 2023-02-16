@@ -1,0 +1,23 @@
+{
+  "name": "@widcardw/eslint-config-solid",
+  "version": "0.3.0-beta.2",
+  "description": "",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "eslint-config"
+  ],
+  "author": "widcardw <widcardw@foxmail.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "eslint": ">=7.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.30.0"
+  },
+  "dependencies": {
+    "eslint-plugin-solid": "^0.9.4"
+  }
+}

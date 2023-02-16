@@ -2,6 +2,7 @@ module.exports = {
   extends: [
     "@antfu/eslint-config-ts",
     "@widcardw/eslint-config-jsx",
+    "@widcardw/eslint-config-solid",
   ],
   plugins: [
     "antfu",

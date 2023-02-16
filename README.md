@@ -12,13 +12,24 @@ Recently I am trying vue-tsx and solid-js, so this preset includes some jsx pres
 pnpm i -D eslint @widcardw/eslint-config
 ```
 
-### Config `.eslintrc`
+### Config `.eslintrc.json`
 
 ```json
 {
   "extends": "@widcardw"
 }
 ```
+
+> If you want to import `eslint-config-solid`, you should install `@widcardw/eslint-config-solid` additionally
+> and change the `.eslintrc.json` to
+>
+> ```json
+> {
+>   "extends": ["@widcardw", "@widcardw/eslint-config-solid"] 
+> }
+> ```
+>
+> This eslint-config includes the recommended rules of `solidjs-community/eslint-plugin-solid`.
 
 ### Config VSCode auto fix
 
