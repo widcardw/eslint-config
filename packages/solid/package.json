@@ -15,7 +15,8 @@
     "eslint": ">=7.4.0"
   },
   "devDependencies": {
-    "eslint": "^8.30.0"
+    "eslint": "^8.30.0",
+    "typescript": "^4.9.5"
   },
   "dependencies": {
     "eslint-plugin-solid": "^0.9.4"
