@@ -103,10 +103,24 @@ function reportFullTagMultilineWrongIndent(context: Rule.RuleContext, node: Rule
   const { start, end } = openingElement.loc!
   context.report({
     node: openingElement,
-    message: 'JSX Opening Element closing escape must be aligned to opening escape',
+    message: 'JSX Opening Element closing escape must be aligned to opening escape.',
     fix(fixer) {
       const endPoint = openingElement.range![1]
       return fixer.replaceTextRange([endPoint - end.column, endPoint - 1], ''.padEnd(start.column, ' '))
+    }
+  })
+}
+
+function reportFullTagChildrenNotInANewLine(context: Rule.RuleContext, node: Rule.Node) {
+  const { openingElement, children }: { openingElement: Rule.Node, children: Rule.Node[] } = node as any
+  const { start: oStart, end: oEnd } = openingElement.loc!
+  const first = children[0]
+  context.report({
+    node: first,
+    message: `Expect a new line after opening element in JSX.`,
+    fix(fixer) {
+      const oEndPos = openingElement.range![1]
+      return fixer.replaceTextRange([oEndPos, oEndPos], '\n' + ' '.repeat(oStart.column + 2))
     }
   })
 }
@@ -120,4 +134,5 @@ export {
   reportFullTagInlineAttrs,
   reportFullTagMultilineAttrsLineBreaks,
   reportFullTagMultilineWrongIndent,
+  reportFullTagChildrenNotInANewLine,
 }

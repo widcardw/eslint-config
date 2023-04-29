@@ -126,3 +126,26 @@ _Incorrect_
     </div>
   ...
 ```
+
+_Incorrect_
+
+```jsx
+  ...
+    <div
+      style={{ color: 'red' }}
+    ><child />
+    </div>
+  ...
+```
+
+**Correct**
+
+```jsx
+  ...
+    <div
+      style={{ color: 'red' }}
+    >
+      <child />
+    </div>
+  ...
+```

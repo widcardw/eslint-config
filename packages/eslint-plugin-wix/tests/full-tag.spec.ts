@@ -29,6 +29,33 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
       code: `
         function SomeComponent() {
           return (
+            <div {...props}>...</div>
+          )
+        }`
+    },
+    {
+      name: 'success',
+      code: `
+        function SomeComponent() {
+          return (
+            <div {...props}><child /></div>
+          )
+        }`
+    },
+    {
+      name: 'success',
+      code: `
+        function SomeComponent() {
+          return (
+            <div {...props}><span>...</span></div>
+          )
+        }`
+    },
+    {
+      name: 'success',
+      code: `
+        function SomeComponent() {
+          return (
             <div style={{ color: 'black' }}>
               ...
             </div>
@@ -74,7 +101,7 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
           )
         }`,
       errors: [
-        { message: 'JSX Opening Element closing escape must be aligned to opening escape' }
+        { message: 'JSX Opening Element closing escape must be aligned to opening escape.' }
       ]
     },
     {
@@ -204,6 +231,73 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
         }`,
       errors: [
         { message: 'Expect no line break before closing bracket, but 1 line break found.' }
+      ]
+    },
+    {
+      name: 'With attrs, JSX children not in a new line',
+      code: `
+        function SomeComponent() { 
+          return (
+            <div
+              class=""
+            >...
+            </div>
+          )
+        }`,
+      output: `
+        function SomeComponent() { 
+          return (
+            <div
+              class=""
+            >
+              ...
+            </div>
+          )
+        }`,
+      errors: [
+        { message: 'Expect a new line after opening element in JSX.' }
+      ]
+    },
+    {
+      name: 'No attrs, JSX Text children not in a new line',
+      code: `
+        function SomeComponent() { 
+          return (
+            <div>...
+            </div>
+          )
+        }`,
+      output: `
+        function SomeComponent() { 
+          return (
+            <div>
+              ...
+            </div>
+          )
+        }`,
+      errors: [
+        { message: 'Expect a new line after opening element in JSX.' }
+      ]
+    },
+    {
+      name: 'No attrs, JSX children not in a new line',
+      code: `
+        function SomeComponent() { 
+          return (
+            <div><div />
+            </div>
+          )
+        }`,
+      output: `
+        function SomeComponent() { 
+          return (
+            <div>
+              <div />
+            </div>
+          )
+        }`,
+      errors: [
+        { message: 'Expect a new line after opening element in JSX.' }
       ]
     },
   ]
