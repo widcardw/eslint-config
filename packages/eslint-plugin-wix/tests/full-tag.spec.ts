@@ -47,6 +47,15 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
       code: `
         function SomeComponent() {
           return (
+            <div {...props}>{param}</div>
+          )
+        }`
+    },
+    {
+      name: 'success',
+      code: `
+        function SomeComponent() {
+          return (
             <div {...props}><span>...</span></div>
           )
         }`
@@ -298,6 +307,46 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
         }`,
       errors: [
         { message: 'Expect a new line after opening element in JSX.' }
+      ]
+    },
+    {
+      name: 'No attrs, JSX children not in a new line',
+      code: `
+        function SomeComponent() { 
+          return (
+            <div>{warning}
+            </div>
+          )
+        }`,
+      output: `
+        function SomeComponent() { 
+          return (
+            <div>
+              {warning}
+            </div>
+          )
+        }`,
+      errors: [
+        { message: 'Expect a new line after opening element in JSX.' }
+      ]
+    },
+    {
+      name: 'No attrs, JSX children not in a new line',
+      code: `
+        function SomeComponent() { 
+          return (
+            <div
+            >{warning}</div>
+          )
+        }`,
+      output: `
+        function SomeComponent() { 
+          return (
+            <div>{warning}</div>
+          )
+        }`,
+      errors: [
+        { message: 'Expect no line break before closing bracket, but 1 line break found.' }
       ]
     },
   ]

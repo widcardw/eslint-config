@@ -78,6 +78,7 @@ export const closingTag: Rule.RuleModule = {
             // console.warn('first content', first)
             const flag = (
               ((first as any).type === 'JSXElement') ||
+              ((first as any).type === 'JSXExpressionContainer') ||
               ((first as any).type === 'JSXText' && !((first as any).raw as string).startsWith('\n' + ' '.repeat(oStart.column + 2)))
             )
             if (flag)
