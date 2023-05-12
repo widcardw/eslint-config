@@ -1,6 +1,6 @@
 {
   "name": "@widcardw/eslint-config",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "ESLint config preset which includes jsx based on @antfu/eslint-config.",
   "main": "index.js",
   "files": [
