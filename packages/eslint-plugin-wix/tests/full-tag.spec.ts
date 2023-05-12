@@ -85,6 +85,30 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
           )
         }`
     },
+    {
+      name: 'JSX children indent',
+      code: `
+        function SomeComponent() { 
+          return (
+            <div>
+            <div>abc</div>
+            </div>
+          )
+        }`,
+    },
+    {
+      name: 'JSX children indent',
+      code: `
+        function SomeComponent() { 
+          return (
+            <div>
+            <div>
+              abc
+            </div>
+            </div>
+          )
+        }`,
+    }
   ],
   invalid: [
     {

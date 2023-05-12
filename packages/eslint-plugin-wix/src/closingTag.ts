@@ -79,7 +79,10 @@ export const closingTag: Rule.RuleModule = {
             const flag = (
               ((first as any).type === 'JSXElement') ||
               ((first as any).type === 'JSXExpressionContainer') ||
-              ((first as any).type === 'JSXText' && !((first as any).raw as string).startsWith('\n' + ' '.repeat(oStart.column + 2)))
+              (
+                (first as any).type === 'JSXText' && 
+                !((first as any).raw as string).replace(/^[ ]+/, '').startsWith('\n')
+              )
             )
             if (flag)
               reportFullTagChildrenNotInANewLine(context, node)
