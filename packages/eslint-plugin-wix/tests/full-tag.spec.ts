@@ -373,5 +373,24 @@ rulerTest.run("Closing bracket indent", rules['closing-tag'], {
         { message: 'Expect no line break before closing bracket, but 1 line break found.' }
       ]
     },
+    {
+      name: 'JSX first attr occupies multiple lines',
+      code: `
+        <div onClick={() => {
+          setCounter(p => p + 1)
+        }}>
+          123
+        </div>`,
+      output: `
+        <div onClick={() => {
+          setCounter(p => p + 1)
+        }}
+        >
+          123
+        </div>`,
+      errors: [
+        { message: 'JSX Opening Element closing escape must be aligned to opening escape.' }
+      ]
+    },
   ]
 })

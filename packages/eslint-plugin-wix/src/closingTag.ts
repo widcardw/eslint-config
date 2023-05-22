@@ -1,5 +1,5 @@
 import { Rule } from 'eslint'
-import { reportFullTagChildrenNotInANewLine, reportFullTagInlineAttrs, reportFullTagMultilineAttrsLineBreaks, reportFullTagMultilineWrongIndent, reportFullTagWithoutAttrs, reportInlineTagWithAttrs, reportMultilineTagWithAttrs, reportSelfCloseMultiLineWrongIndent, reportTagOnly } from './reports'
+import { reportFullTagChildrenNotInANewLine, reportFullTagInlineAttrs, reportFullTagMultilineAttrsLineBreaks, reportFullTagMultilineWrongIndent, reportFullTagOpeningEndSymbolShouldBeInANewLine, reportFullTagWithoutAttrs, reportInlineTagWithAttrs, reportMultilineTagWithAttrs, reportSelfCloseMultiLineWrongIndent, reportTagOnly } from './reports'
 
 export const closingTag: Rule.RuleModule = {
   meta: {
@@ -128,7 +128,11 @@ export const closingTag: Rule.RuleModule = {
            *  </div>
            */
 
-          if (locLastAttr.end.line !== oStart.line && lineBreaks >= 1 && oEnd.column - oStart.column !== 1)
+          // Here!!
+          if (locLastAttr.end.line === oEnd.line && locLastAttr.end.line !== oStart.line && lineBreaks >= 1)
+            reportFullTagOpeningEndSymbolShouldBeInANewLine(context, node)
+
+          else if (locLastAttr.end.line !== oStart.line && lineBreaks >= 1 && oEnd.column - oStart.column !== 1)
             reportFullTagMultilineWrongIndent(context, node)
           /**
            *  <div                              <div

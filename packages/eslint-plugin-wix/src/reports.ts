@@ -93,7 +93,7 @@ function reportFullTagMultilineAttrsLineBreaks(context: Rule.RuleContext, node: 
     message: `Expect no line break before closing bracket, but ${lineBreaks - 1} line break${lineBreaks > 2 ? 's' : ''} found.`,
     fix(fixer) {
       const endPoint = openingElement.range![1]
-      return fixer.replaceTextRange([endPoint - end.column - lineBreaks + 1, endPoint - 1], ''.padEnd(start.column, ' '))
+      return fixer.replaceTextRange([endPoint - end.column - lineBreaks + 1, endPoint - 1], ' '.repeat(start.column))
     }
   })
 }
@@ -106,14 +106,14 @@ function reportFullTagMultilineWrongIndent(context: Rule.RuleContext, node: Rule
     message: 'JSX Opening Element closing escape must be aligned to opening escape.',
     fix(fixer) {
       const endPoint = openingElement.range![1]
-      return fixer.replaceTextRange([endPoint - end.column, endPoint - 1], ''.padEnd(start.column, ' '))
+      return fixer.replaceTextRange([endPoint - end.column, endPoint - 1], ' '.repeat(start.column))
     }
   })
 }
 
 function reportFullTagChildrenNotInANewLine(context: Rule.RuleContext, node: Rule.Node) {
   const { openingElement, children }: { openingElement: Rule.Node, children: Rule.Node[] } = node as any
-  const { start: oStart, end: oEnd } = openingElement.loc!
+  const { start: oStart } = openingElement.loc!
   const first = children[0]
   context.report({
     node: first,
@@ -121,6 +121,19 @@ function reportFullTagChildrenNotInANewLine(context: Rule.RuleContext, node: Rul
     fix(fixer) {
       const oEndPos = openingElement.range![1]
       return fixer.replaceTextRange([oEndPos, oEndPos], '\n' + ' '.repeat(oStart.column + 2))
+    }
+  })
+}
+
+function reportFullTagOpeningEndSymbolShouldBeInANewLine(context: Rule.RuleContext, node: Rule.Node) {
+  const openingElement: Rule.Node = (node as any).openingElement
+  const { start: oStart } = openingElement.loc!
+  context.report({
+    node: openingElement,
+    message: 'JSX Opening Element closing escape must be aligned to opening escape.',
+    fix(fixer) {
+      const endPoint = openingElement.range![1]
+      return fixer.replaceTextRange([endPoint - 1, endPoint - 1], '\n' + ' '.repeat(oStart.column))
     }
   })
 }
@@ -135,4 +148,5 @@ export {
   reportFullTagMultilineAttrsLineBreaks,
   reportFullTagMultilineWrongIndent,
   reportFullTagChildrenNotInANewLine,
+  reportFullTagOpeningEndSymbolShouldBeInANewLine,
 }
